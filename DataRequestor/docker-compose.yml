@@ -3,6 +3,8 @@ version: '3.4'
 services:
   codespacesprojecttemplatepy:
     image: codespacesprojecttemplatepy
+    env_file:
+      - MIASTO.env
     build:
       context: .
       dockerfile: ./Dockerfile
