@@ -59,8 +59,8 @@ class WeatherRequester:
 
 
 
-#API = WeatherRequester(os.getenv('MIASTO')) #ZA CHINY NIE DZIAŁĄ
-API = WeatherRequester('Wrocław')
+API = WeatherRequester(os.getenv('MIASTO')) #podczas działania dockera
+#API = WeatherRequester('Wrocław') #pokazowe w konsoli
 
 #print (os.environ)
 while (True):

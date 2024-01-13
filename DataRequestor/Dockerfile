@@ -8,24 +8,28 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Install pip requirements
-COPY requirements.txt .
+COPY requirements.txt . 
 RUN python -m pip install -r requirements.txt
 
 WORKDIR /app
 COPY . /app
-
+COPY main.py .
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
-RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
-USER appuser
+
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
+#CMD ["python", "main.py"]
+
+#FROM python:3.8
+#WORKDIR /usr/src/app
+#COPY . .
+#RUN pip install --no-cache-dir -r requirements.txt
+
+RUN adduser -u 5001 --disabled-password --gecos "" appuser && chown -R appuser /app
+USER appuser
+
+#EXPOSE 5001
 CMD ["python", "main.py"]
-
-FROM python:3.8
-WORKDIR /usr/src/app
-COPY . .
-RUN pip install --no-cache-dir -r requirements.txt
-
-EXPOSE 5000
-CMD ["python", "./app.py"]
+#CMD ["python", "./app.py"]
+#CMD ["python", "app.py"]
