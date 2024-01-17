@@ -13,3 +13,7 @@ services:
     command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --listen 0.0.0.0:5001 main.py "]  
     ports:       
     - 5001:5001
+
+
+
+
